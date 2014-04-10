@@ -41,15 +41,15 @@ int main(int argc, char *argv[])
 
 	vector<Vec3f> circles;
     
-    int key = 0;
+    	int key = 0;
 	while(key != 27)
 	{
 		// capture each frame of the video
 		input >> input_frame;
 		if(input_frame.empty())
 			break;
-        // resize the image for faster processing
-        resize(input_frame, input_frame, Size(), 0.5, 0.5, INTER_LINEAR);
+        	// resize the image for faster processing
+        	resize(input_frame, input_frame, Size(), 0.5, 0.5, INTER_LINEAR);
         
 		// convert input frame to grayscale
 		cvtColor(input_frame, input_gray_frame, CV_BGR2GRAY);
@@ -67,11 +67,11 @@ int main(int argc, char *argv[])
 		// Draw the circles detected
 		for( size_t i = 0; i < circles.size(); i++ )
 		{
-            // compute the speed of the object
-            newX = circles[i][0];
-            newY = circles[i][1];
-            speed = sqrt((newX-oldX)*(newX-oldX) + (newY-oldY)*(newY-oldY));
-            cout << "Speed of the object = " << speed << " pixels per frame" << endl;
+            		// compute the speed of the object
+	            	newX = circles[i][0];
+	            	newY = circles[i][1];
+	            	speed = sqrt((newX-oldX)*(newX-oldX) + (newY-oldY)*(newY-oldY));
+	            	cout << "Speed of the object = " << speed << " pixels per frame" << endl;
 
 			Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
 			float radius = cvRound(circles[i][2]);
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
         
 		imshow("Object", input_frame);
         
-        oldX = newX;
+        	oldX = newX;
 		oldY = newY;
 		key = waitKey(1);
 	}
